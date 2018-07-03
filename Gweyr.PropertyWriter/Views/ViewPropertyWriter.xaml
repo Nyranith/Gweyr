@@ -8,6 +8,13 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <Button>TEST</Button>
+        <RichTextBox 
+            ScrollViewer.CanContentScroll="True" 
+            VerticalScrollBarVisibility="Visible"
+            Name="TextInput"
+            AcceptsReturn="True"
+            >
+
+        </RichTextBox>
     </Grid>
 </UserControl>

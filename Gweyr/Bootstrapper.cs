@@ -29,7 +29,6 @@ namespace Gweyr
 
             this.regionManager = Container.TryResolve<Prism.Regions.IRegionManager>();
 
-
             this.regionManager.RegisterViewWithRegion(RegionNames.LeftSideRegion, typeof(Menu));
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ViewPropertyWriter)); 
 
