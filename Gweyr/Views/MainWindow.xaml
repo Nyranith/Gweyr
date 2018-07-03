@@ -1,0 +1,14 @@
+﻿<Controls:MetroWindow x:Class="Gweyr.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525">
+    <Grid>
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+            <Button Content="{iconPacks:Modern Companioncube}" />
+
+    </Grid>
+</Controls:MetroWindow>
