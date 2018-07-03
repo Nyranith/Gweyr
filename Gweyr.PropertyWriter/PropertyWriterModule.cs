@@ -4,6 +4,8 @@ using Prism.Regions;
 using System;
 using Microsoft.Practices.Unity;
 using Prism.Unity;
+using Gweyr.Common;
+using System.Collections.Generic;
 
 namespace Gweyr.PropertyWriter
 {
@@ -18,9 +20,13 @@ namespace Gweyr.PropertyWriter
             _regionManager = regionManager;
         }
 
+
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<ViewA>();
+            //_container.RegisterTypeForNavigation<ViewA>();
+
+            _container.RegisterType<ViewPropertyWriter>();
+            _container.RegisterTypeForNavigation<ViewPropertyWriter>();
         }
     }
 }

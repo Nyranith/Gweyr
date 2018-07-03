@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gweyr.ViewModels.Content;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gweyr.PropertyWriter.Views
+namespace Gweyr.Views.Content
 {
     /// <summary>
-    /// Interaction logic for ViewA.xaml
+    /// Interaction logic for Menu.xaml
     /// </summary>
-    public partial class ViewA : UserControl
+    public partial class Menu : UserControl
     {
-        public ViewA()
+        public Menu(MenuViewModel menuViewModel)
         {
             InitializeComponent();
+
+            this.DataContext = menuViewModel; 
         }
     }
 }
