@@ -22,7 +22,6 @@
             </Grid.ColumnDefinitions>
 
             <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static infRegions:RegionNames.LeftSideRegion}" />
-
             <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static infRegions:RegionNames.ContentRegion}" Margin="2,0,2,0" />
 
         </Grid>

@@ -8,13 +8,39 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <RichTextBox 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.InputBindings>
+            <KeyBinding Command="{Binding OnPressCommand}" Gesture="Enter" />
+        </Grid.InputBindings>
+       
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Label Content="Propery type"/>
+            <TextBox Text="{Binding PropertyType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" >
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding OnPressCommand}" Gesture="Enter" />
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <Label Content="Propery name"/>
+            <TextBox MinWidth="100"
+                     Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding OnPressCommand}" Gesture="Enter" />
+                </TextBox.InputBindings>
+            </TextBox>
+        </StackPanel>
+        
+        <TextBox 
+            Grid.Row="1"
             ScrollViewer.CanContentScroll="True" 
             VerticalScrollBarVisibility="Visible"
             Name="TextInput"
             AcceptsReturn="True"
+            Text="{Binding TextBox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             >
-
-        </RichTextBox>
+        </TextBox>
     </Grid>
 </UserControl>
