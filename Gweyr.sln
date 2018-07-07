@@ -9,24 +9,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gweyr.PropertyWriter", "Gwe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gweyr.Common", "Gweyr.Common\Gweyr.Common.csproj", "{45F5E650-29E6-4215-BA4B-D725667B70E6}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Gweyr.Installer", "Gweyr.Installer\Gweyr.Installer.vdproj", "{7C50A04A-0C92-4AC8-85D2-68A36A1F3A95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B17AA56C-38E3-4C2E-A764-CA00C456B724}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{B17AA56C-38E3-4C2E-A764-CA00C456B724}.All|Any CPU.Build.0 = Release|Any CPU
 		{B17AA56C-38E3-4C2E-A764-CA00C456B724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B17AA56C-38E3-4C2E-A764-CA00C456B724}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B17AA56C-38E3-4C2E-A764-CA00C456B724}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B17AA56C-38E3-4C2E-A764-CA00C456B724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C75919EE-7498-4EFE-A52A-5BA569A9DF85}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{C75919EE-7498-4EFE-A52A-5BA569A9DF85}.All|Any CPU.Build.0 = Release|Any CPU
 		{C75919EE-7498-4EFE-A52A-5BA569A9DF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C75919EE-7498-4EFE-A52A-5BA569A9DF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C75919EE-7498-4EFE-A52A-5BA569A9DF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C75919EE-7498-4EFE-A52A-5BA569A9DF85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F5E650-29E6-4215-BA4B-D725667B70E6}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{45F5E650-29E6-4215-BA4B-D725667B70E6}.All|Any CPU.Build.0 = Release|Any CPU
 		{45F5E650-29E6-4215-BA4B-D725667B70E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45F5E650-29E6-4215-BA4B-D725667B70E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45F5E650-29E6-4215-BA4B-D725667B70E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45F5E650-29E6-4215-BA4B-D725667B70E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C50A04A-0C92-4AC8-85D2-68A36A1F3A95}.All|Any CPU.ActiveCfg = Release
+		{7C50A04A-0C92-4AC8-85D2-68A36A1F3A95}.Debug|Any CPU.ActiveCfg = Debug
+		{7C50A04A-0C92-4AC8-85D2-68A36A1F3A95}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
