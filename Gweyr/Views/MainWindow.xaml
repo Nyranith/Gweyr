@@ -5,10 +5,13 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:infCommands="clr-namespace:Gweyr.Commands"
         xmlns:infRegions="clr-namespace:Gweyr.Names"
-        Title="{Binding Title}" Height="350" Width="525">
-
+        xmlns:tb="http://www.hardcodet.net/taskbar" 
+        Title="{Binding Title}" Height="350" Width="525"
+        Visibility="{Binding Visibility}"
+        xmlns:commands="clr-namespace:Gweyr.Commands"            
+        WindowState="{Binding WindowState, Mode=TwoWay}">
+ 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,8 +26,33 @@
 
             <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static infRegions:RegionNames.LeftSideRegion}" />
             <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static infRegions:RegionNames.ContentRegion}" Margin="2,0,2,0" />
-
         </Grid>
 
+        <tb:TaskbarIcon
+                IconSource="/Images/companion_cube_icon.ico"
+                ToolTipText="Gweyr"
+                DoubleClickCommand="{commands:WindowCommand}"
+                DoubleClickCommandParameter="{x:Static commands:WindowCommandType.OPEN}"
+        >
+            <tb:TaskbarIcon.TrayPopup>
+                <Border
+                    Background="White"
+                    BorderBrush="Orange"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Width="160">
+                    <StackPanel>
+                        <Button
+                            Content="Click Me!"
+                            Command="{commands:WindowCommand}"
+                            CommandParameter="{x:Static commands:WindowCommandType.CLOSE}"
+                            Margin="5,0,5,10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                </Border>
+            </tb:TaskbarIcon.TrayPopup>
+
+        </tb:TaskbarIcon>
     </Grid>
 </Controls:MetroWindow>

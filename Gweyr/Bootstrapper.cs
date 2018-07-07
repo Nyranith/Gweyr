@@ -10,6 +10,8 @@ using Gweyr.Names;
 using Prism.Regions;
 using System;
 using Gweyr.PropertyWriter.Views;
+using Prism.Commands;
+using Gweyr.Commands;
 
 namespace Gweyr
 {
@@ -17,6 +19,41 @@ namespace Gweyr
     {
 
         private IRegionManager regionManager;
+
+        private DelegateCommand<object> WindowCommand { get; set; }
+
+        public Bootstrapper() : base()
+        {
+            WindowCommand = new DelegateCommand<object>(OnWindowCommand);
+            ApplicationCommands.WindowStateCommand.RegisterCommand(WindowCommand);
+        }
+
+        public void OnWindowCommand(object windowCommand)
+        {
+            if(windowCommand != null)
+            {
+                int obt = (int)windowCommand;
+
+                if (Application.Current.MainWindow != null && obt == WindowCommandType.CLOSE)
+                {
+                    Application.Current.MainWindow.Close();
+                }
+                else if (obt == WindowCommandType.OPEN)
+                {
+                    if(Application.Current.MainWindow == null)
+                    {
+                        CreateShell();
+                        InitializeShell();
+                    } else
+                    {
+                        Application.Current.MainWindow.Show(); 
+                    }
+                }
+            }
+
+
+           
+        }
 
         protected override DependencyObject CreateShell()
         {
@@ -31,7 +68,6 @@ namespace Gweyr
 
             this.regionManager.RegisterViewWithRegion(RegionNames.LeftSideRegion, typeof(Menu));
             this.regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ViewPropertyWriter)); 
-
         }
 
         protected override void ConfigureContainer()
@@ -40,7 +76,6 @@ namespace Gweyr
 
             Container.RegisterViewType<Menu>();
             Container.RegisterTypeForNavigation<Menu>();
-
         }
 
 

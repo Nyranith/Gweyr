@@ -10,5 +10,8 @@ namespace Gweyr.Commands
     public class ApplicationCommands
     {
         public static CompositeCommand NavigateCommand = new CompositeCommand();
+
+        public static CompositeCommand WindowStateCommand = new CompositeCommand(); 
+
     }
 }

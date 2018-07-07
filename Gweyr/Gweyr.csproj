@@ -73,6 +73,9 @@
     </Compile>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Commands\ApplicationCommands.cs" />
+    <Compile Include="Commands\WindowCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\WindowCommandType.cs" />
     <Compile Include="Common\ModuleViews.cs" />
     <Compile Include="Names\RegionNames.cs" />
     <Compile Include="ViewModels\Content\MenuViewModel.cs" />
@@ -109,6 +112,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf">
+      <Version>1.0.8</Version>
+    </PackageReference>
     <PackageReference Include="MahApps.Metro">
       <Version>1.6.5</Version>
     </PackageReference>
@@ -136,6 +142,10 @@
       <Name>Gweyr.PropertyWriter</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\companion_cube_icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
