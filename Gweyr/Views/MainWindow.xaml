@@ -11,8 +11,8 @@
         Visibility="{Binding Visibility}"
         xmlns:commands="clr-namespace:Gweyr.Commands"            
         WindowState="{Binding WindowState, Mode=TwoWay}">
- 
-    <Grid>
+  
+  <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -26,7 +26,7 @@
 
             <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{x:Static infRegions:RegionNames.LeftSideRegion}" />
             <ContentControl Grid.Column="1" prism:RegionManager.RegionName="{x:Static infRegions:RegionNames.ContentRegion}" Margin="2,0,2,0" />
-        </Grid>
+	</Grid>
 
         <tb:TaskbarIcon
                 IconSource="/Images/companion_cube_icon.ico"
@@ -34,28 +34,22 @@
                 DoubleClickCommand="{commands:WindowCommand}"
                 DoubleClickCommandParameter="{x:Static commands:WindowCommandType.OPEN}"
                 PopupActivation="RightClick"
+		  
         >
             <tb:TaskbarIcon.TrayPopup>
                 <Border
                     Background="White"
-                    BorderBrush="Orange"
+                    BorderBrush="LightBlue"
                     BorderThickness="2"
                     CornerRadius="4"
-                    Width="160">
-                    <StackPanel>
-                        <Button
-                            Content="Click Me!"
-                            Command="{commands:WindowCommand}"
-                            CommandParameter="{x:Static commands:WindowCommandType.CLOSE}"
-                            Margin="5,0,5,10"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center" />
-                        <Button
+                    Width="120">
+					<StackPanel>
+						<Button
+							Style="{DynamicResource BtnStyleTaskbarMenu}"
                             Content="Exit"
                             Command="{commands:WindowCommand}"
                             CommandParameter="{x:Static commands:WindowCommandType.EXIT}"
-                            Margin="5,0,5,10"
-                            HorizontalAlignment="Center"
+                            HorizontalAlignment="Stretch"
                             VerticalAlignment="Center" />
                     </StackPanel>
                 </Border>
