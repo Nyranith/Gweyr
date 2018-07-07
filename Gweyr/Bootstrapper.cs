@@ -48,11 +48,11 @@ namespace Gweyr
                     {
                         Application.Current.MainWindow.Show(); 
                     }
+                } else if(obt == WindowCommandType.EXIT)
+                {
+                    System.Windows.Application.Current.Shutdown();
                 }
             }
-
-
-           
         }
 
         protected override DependencyObject CreateShell()
@@ -84,8 +84,6 @@ namespace Gweyr
             var moduleCatalog = (ModuleCatalog)ModuleCatalog;
 
             moduleCatalog.AddModule(typeof(PropertyWriterModule));
-
-            //moduleCatalog.AddModule(typeof(YOUR_MODULE));
         }
     }
 }

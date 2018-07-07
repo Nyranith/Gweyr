@@ -33,6 +33,7 @@
                 ToolTipText="Gweyr"
                 DoubleClickCommand="{commands:WindowCommand}"
                 DoubleClickCommandParameter="{x:Static commands:WindowCommandType.OPEN}"
+                PopupActivation="RightClick"
         >
             <tb:TaskbarIcon.TrayPopup>
                 <Border
@@ -46,6 +47,13 @@
                             Content="Click Me!"
                             Command="{commands:WindowCommand}"
                             CommandParameter="{x:Static commands:WindowCommandType.CLOSE}"
+                            Margin="5,0,5,10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                        <Button
+                            Content="Exit"
+                            Command="{commands:WindowCommand}"
+                            CommandParameter="{x:Static commands:WindowCommandType.EXIT}"
                             Margin="5,0,5,10"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center" />
