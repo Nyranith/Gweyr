@@ -7,7 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Gweyr.Common; 
+using Gweyr.Common;
+using System.CodeDom;
+using Microsoft.CSharp;
+using System.IO;
 
 namespace Gweyr.PropertyWriter.ViewModels
 {
@@ -68,39 +71,54 @@ namespace Gweyr.PropertyWriter.ViewModels
 
         public void CreatePropery()
         {
-            var name = Name.FirstToUpper();
-            var privateName = '_' + Name.ToLower();
-            
-            var sb = new StringBuilder();
-            sb.Append("private " + PropertyType + " " + privateName + ";");
-            sb.Append(Environment.NewLine);
-            sb.Append("public " + PropertyType + " " + name);
-            sb.Append('{');
-            sb.AppendLine();
-            sb.Append("get{ ");
-            sb.AppendLine();
-            sb.Append("return " + privateName + ";");
-            sb.AppendLine();
-            sb.Append(" }");
-            sb.AppendLine();
-            sb.Append("set{ ");
-            sb.AppendLine();
-            sb.Append("if(" + privateName + " != value){");
-            sb.AppendLine();
-            sb.Append(privateName + "= value;");
-            sb.AppendLine();
-            sb.Append("OnPropertyChanged(" + '"' + name + '"' + ");");
-            sb.AppendLine();
-            sb.Append('}');
-            sb.AppendLine();
-            sb.Append('}');
-            sb.AppendLine();
-            sb.Append('}');
-            sb.AppendLine();
 
-            
-            TextBox = sb.ToString();
-            Clipboard.SetText(sb.ToString());
+            CodeCompileUnit codeCompileUnit = new CodeCompileUnit(); 
+
+            if(Name != null && PropertyType != null)
+            {
+                CodeMemberField propertyField = new CodeMemberField(new CodeTypeReference(PropertyType), '_' + Name.FirstToLower())
+                {
+                    Attributes = MemberAttributes.Private
+                }; 
+
+                CodeMemberProperty propertyValue = new CodeMemberProperty()
+                {
+                    Type = new CodeTypeReference(PropertyType),
+                    Name = Name.FirstToUpper(),
+                    Attributes = MemberAttributes.Public | MemberAttributes.Final,
+                };
+                propertyValue.GetStatements.Add(new CodeMethodReturnStatement(
+                        new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), propertyField.Name)));
+
+                var setAssignment = new CodeAssignStatement(
+                        new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), propertyField.Name),
+                        new CodePropertySetValueReferenceExpression());
+
+                var methodeOnPropertyChanged = new CodeMethodInvokeExpression()
+                {
+                    Method = new CodeMethodReferenceExpression()
+                    {
+                        MethodName = "OnPropertyChanged"
+                    }
+                };
+
+                methodeOnPropertyChanged.Parameters.Add(new CodeSnippetExpression(string.Format("\"{0}\"", propertyValue.Name)));
+
+                CodeConditionStatement codeConditionStatement = new CodeConditionStatement(new CodeBinaryOperatorExpression(new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), propertyField.Name), CodeBinaryOperatorType.IdentityInequality, new CodePropertySetValueReferenceExpression()), setAssignment);
+                codeConditionStatement.TrueStatements.Add(methodeOnPropertyChanged); 
+
+
+                propertyValue.SetStatements.Add(codeConditionStatement);
+
+                TextWriter writer = new StringWriter();
+
+                CSharpCodeProvider provider = new CSharpCodeProvider();
+                provider.GenerateCodeFromMember(propertyField, writer, null);
+                provider.GenerateCodeFromMember(propertyValue, writer, null);
+
+                TextBox = writer.ToString();
+                Clipboard.SetText(writer.ToString()); 
+            }
         }
 
     }
