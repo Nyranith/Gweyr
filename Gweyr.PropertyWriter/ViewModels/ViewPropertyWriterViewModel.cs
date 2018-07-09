@@ -65,6 +65,7 @@ namespace Gweyr.PropertyWriter.ViewModels
             OnPressCommand = new DelegateCommand(CreatePropery); 
         }
 
+
         public void CreatePropery()
         {
             var name = Name.FirstToUpper();

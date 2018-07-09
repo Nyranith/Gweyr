@@ -22,10 +22,14 @@ namespace Gweyr
 
         private DelegateCommand<object> WindowCommand { get; set; }
 
+        private HotKey hotKey { get; set; }
+
         public Bootstrapper() : base()
         {
             WindowCommand = new DelegateCommand<object>(OnWindowCommand);
             ApplicationCommands.WindowStateCommand.RegisterCommand(WindowCommand);
+
+            hotKey = new HotKey(System.Windows.Input.Key.R, KeyModifier.Shift | KeyModifier.Ctrl, OnHotKeyHandler);
         }
 
         public void OnWindowCommand(object windowCommand)
@@ -85,5 +89,11 @@ namespace Gweyr
 
             moduleCatalog.AddModule(typeof(PropertyWriterModule));
         }
+
+        private void OnHotKeyHandler(HotKey hotKey)
+        {
+            WindowCommand.Execute(WindowCommandType.OPEN); 
+        }
+
     }
 }

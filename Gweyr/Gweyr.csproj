@@ -95,6 +95,7 @@
     <Compile Include="Commands\WindowCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\WindowCommandType.cs" />
+    <Compile Include="Common\HotKey.cs" />
     <Compile Include="Common\ModuleViews.cs" />
     <Compile Include="Names\RegionNames.cs" />
     <Compile Include="ViewModels\Content\MenuViewModel.cs" />
@@ -148,6 +149,9 @@
     </PackageReference>
     <PackageReference Include="MaterialDesignThemes.MahApps">
       <Version>0.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="Nyranith.Windows.Internal">
+      <Version>0.1.17</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity" Version="6.3.0" />
   </ItemGroup>
