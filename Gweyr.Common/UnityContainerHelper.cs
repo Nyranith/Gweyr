@@ -29,6 +29,5 @@ namespace Gweyr.Common
         {
             container.RegisterTypeForNavigation<T>();
         }
-
     }
 }

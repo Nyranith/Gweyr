@@ -71,7 +71,6 @@ namespace Gweyr.PropertyWriter.ViewModels
 
         public void CreatePropery()
         {
-
             CodeCompileUnit codeCompileUnit = new CodeCompileUnit(); 
 
             if(Name != null && PropertyType != null)
